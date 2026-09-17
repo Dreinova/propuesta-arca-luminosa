@@ -73,9 +73,23 @@
   padding-block:var(--sp-2);
 }
 
-.brand{ display:flex; align-items:center; gap:.7rem; font-family:var(--font-display); font-weight:600; font-size:var(--fs-md); color:var(--color-primary-ink); }
-.brand img{ height:44px; width:auto; transition:height var(--dur-base); }
+.brand{ display:flex; align-items:center; gap:.7rem; font-family:var(--font-display); font-weight:600; font-size:var(--fs-md); color:var(--color-primary-ink); white-space:nowrap; transition:color var(--dur-fast); }
+.brand img{ height:44px; width:auto; flex-shrink:0; transition:height var(--dur-base); }
 .site-header.is-scrolled .brand img{ height:36px; }
+
+@media (max-width:420px){
+  .brand{ gap:.45rem; font-size:var(--fs-sm); }
+  .brand img{ height:34px; }
+  .site-header.is-scrolled .brand img{ height:30px; }
+  .nav-actions{ gap:var(--sp-2); }
+  .nav-actions .btn--sm{ padding:.55em 1em; }
+}
+
+/* When the mobile menu is open, the header sits visually on top of it
+   (see .mobile-nav z-index below) so the toggle stays reachable — but the
+   header itself may still be transparent, so force light contrast then. */
+body.nav-open .brand{ color:#fff; }
+body.nav-open .nav-toggle span{ background:#fff; }
 
 .nav-links{ display:none; align-items:center; gap:var(--sp-6); }
 .nav-links a{ font-weight:600; font-size:var(--fs-sm); position:relative; padding-block:.3rem; }
@@ -113,16 +127,18 @@
 .nav-toggle.is-open span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
 
 .mobile-nav{
-  position:fixed; inset:0; z-index:190;
+  position:fixed; inset:0; z-index:90;
   background:var(--color-primary-ink);
   color:#fff;
   display:flex; flex-direction:column; justify-content:center;
-  padding:var(--gutter);
+  padding:calc(var(--gutter) + 4.5rem) var(--gutter) var(--gutter);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   transform:translateY(-100%);
   visibility:hidden;
 }
 .mobile-nav a{ font-family:var(--font-display); font-size:var(--fs-xl); font-weight:500; }
-.mobile-nav ul{ display:flex; flex-direction:column; gap:var(--sp-4); }
+.mobile-nav ul{ display:flex; flex-direction:column; gap:var(--sp-4); margin-block:auto; }
 
 @media (min-width:960px){
   .nav-links{ display:flex; }
@@ -140,6 +156,7 @@
 .social-row a{ width:2.6rem; height:2.6rem; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; transition:background var(--dur-fast), transform var(--dur-fast); }
 .social-row a:hover{ background:var(--color-primary); border-color:var(--color-primary); transform:translateY(-3px); color:var(--green-900); }
 @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:600px){ .footer-grid{ grid-template-columns:1fr; gap:var(--sp-6); } }
 
 /* ---- Cards ----------------------------------------------------- */
 .card{
@@ -158,7 +175,7 @@
 .card-dog__badge{ position:absolute; top:var(--sp-3); left:var(--sp-3); }
 .card-dog__body{ padding:var(--sp-5); display:flex; flex-direction:column; gap:var(--sp-2); flex:1; }
 .card-dog__name{ font-family:var(--font-display); font-size:var(--fs-lg); }
-.card-dog__meta{ display:flex; gap:var(--sp-3); font-size:var(--fs-xs); color:var(--color-text-muted); }
+.card-dog__meta{ display:flex; flex-wrap:wrap; gap:.3rem var(--sp-3); font-size:var(--fs-xs); color:var(--color-text-muted); }
 .card-dog__desc{ font-size:var(--fs-sm); color:var(--color-text-muted); flex:1; }
 
 .card-post{ display:flex; flex-direction:column; }
@@ -252,5 +269,6 @@
 .filter-pill.is-active, .filter-pill:hover{ background:var(--color-primary-ink); color:#fff; border-color:var(--color-primary-ink); }
 
 /* ---- Back to top --------------------------------------------------------- */
-.to-top{ position:fixed; right:var(--sp-5); bottom:var(--sp-5); z-index:150; opacity:0; pointer-events:none; transform:translateY(10px); transition:opacity var(--dur-fast), transform var(--dur-fast); }
+.to-top{ position:fixed; right:var(--sp-5); bottom:var(--sp-5); z-index:80; opacity:0; pointer-events:none; transform:translateY(10px); transition:opacity var(--dur-fast), transform var(--dur-fast); }
 .to-top.is-visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+body.nav-open .to-top{ opacity:0; pointer-events:none; }

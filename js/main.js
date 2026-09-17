@@ -33,6 +33,8 @@
     function setNav(state){
       open = state;
       navToggle.classList.toggle("is-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("nav-open", open);
       document.body.style.overflow = open ? "hidden" : "";
       if (window.gsap){
         gsap.to(mobileNav, {
@@ -48,6 +50,9 @@
     navToggle.addEventListener("click", function(){ setNav(!open); });
     mobileNav.querySelectorAll("a").forEach(function(a){
       a.addEventListener("click", function(){ setNav(false); });
+    });
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape" && open) setNav(false);
     });
   }
 

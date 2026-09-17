@@ -3,7 +3,7 @@
    ========================================================= */
 
 *, *::before, *::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
 html, body{ padding:0; margin:0; }
 
 body{
@@ -101,11 +101,21 @@ em, .italic-accent{
 .gap-1{gap:var(--sp-1)} .gap-2{gap:var(--sp-2)} .gap-3{gap:var(--sp-3)}
 .gap-4{gap:var(--sp-4)} .gap-5{gap:var(--sp-5)} .gap-6{gap:var(--sp-6)}
 
-@media (min-width: 860px){
+@media (min-width: 640px){
   .grid--2{ grid-template-columns:repeat(2,1fr); }
+  .grid--3{ grid-template-columns:repeat(2,1fr); }
+  .grid--4{ grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width: 960px){
   .grid--3{ grid-template-columns:repeat(3,1fr); }
+  .grid--4{ grid-template-columns:repeat(3,1fr); }
+}
+@media (min-width: 1180px){
   .grid--4{ grid-template-columns:repeat(4,1fr); }
 }
+
+.table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.table-scroll table{ min-width:520px; }
 
 .visually-hidden{
   position:absolute; width:1px; height:1px; overflow:hidden;
