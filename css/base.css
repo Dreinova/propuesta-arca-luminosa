@@ -1,0 +1,125 @@
+/* =========================================================
+   ARCA LUMINOSA — BASE / RESET / UTILITIES
+   ========================================================= */
+
+*, *::before, *::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+html, body{ padding:0; margin:0; }
+
+body{
+  background:var(--color-bg);
+  color:var(--color-text);
+  font-family:var(--font-body);
+  font-size:var(--fs-base);
+  line-height:var(--lh-normal);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img, picture, video, svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul, ol{ margin:0; padding:0; list-style:none; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+input, textarea, select{ font:inherit; color:inherit; }
+h1,h2,h3,h4,h5,h6,p,figure{ margin:0; }
+
+::selection{ background:var(--green-300); color:var(--green-900); }
+
+:focus-visible{
+  outline:3px solid var(--color-focus);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* ---- Typography ------------------------------------------ */
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:600;
+  letter-spacing:var(--tracking-tight);
+  line-height:var(--lh-tight);
+  color:var(--color-primary-ink);
+}
+h1{ font-size:var(--fs-3xl); font-weight:500; }
+h2{ font-size:var(--fs-2xl); }
+h3{ font-size:var(--fs-lg); }
+h4{ font-size:var(--fs-md); font-family:var(--font-body); font-weight:700; }
+
+em, .italic-accent{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:500;
+  color:var(--color-primary-dark);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  font-size:var(--fs-2xs);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:var(--tracking-wider);
+  color:var(--color-primary-dark);
+}
+.eyebrow::before{
+  content:"";
+  width:1.6em; height:2px;
+  background:var(--color-primary);
+  display:inline-block;
+}
+
+.lede{
+  font-size:var(--fs-md);
+  color:var(--color-text-muted);
+  line-height:var(--lh-loose);
+  max-width:60ch;
+}
+
+.text-muted{ color:var(--color-text-muted); }
+.text-center{ text-align:center; }
+
+/* ---- Layout ------------------------------------------------ */
+.container{
+  width:100%;
+  max-width:var(--container-w);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+.container--narrow{ max-width:var(--container-w-narrow); }
+
+.section{ padding-block:var(--section-pad); position:relative; }
+.section--tight{ padding-block:calc(var(--section-pad) * .55); }
+.section--surface{ background:var(--color-surface); }
+.section--ink{ background:var(--color-primary-ink); color:var(--cream-100); }
+.section--ink h1,.section--ink h2,.section--ink h3{ color:var(--cream-100); }
+.section--tint{ background:var(--color-primary-tint); }
+
+.stack{ display:flex; flex-direction:column; }
+.cluster{ display:flex; flex-wrap:wrap; align-items:center; }
+.grid{ display:grid; gap:var(--sp-6); }
+
+.gap-1{gap:var(--sp-1)} .gap-2{gap:var(--sp-2)} .gap-3{gap:var(--sp-3)}
+.gap-4{gap:var(--sp-4)} .gap-5{gap:var(--sp-5)} .gap-6{gap:var(--sp-6)}
+
+@media (min-width: 860px){
+  .grid--2{ grid-template-columns:repeat(2,1fr); }
+  .grid--3{ grid-template-columns:repeat(3,1fr); }
+  .grid--4{ grid-template-columns:repeat(4,1fr); }
+}
+
+.visually-hidden{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0; padding:0; margin:-1px;
+}
+
+.skip-link{
+  position:absolute; left:1rem; top:-4rem;
+  background:var(--color-primary-ink); color:#fff;
+  padding:.75rem 1.25rem; border-radius:var(--radius-sm);
+  z-index:1000; transition:top var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus{ top:1rem; }
+
+/* GSAP reveal starting states (JS adds .is-visible / uses GSAP directly) */
+[data-reveal]{ opacity:0; }
+.no-js [data-reveal]{ opacity:1; }

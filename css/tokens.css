@@ -1,0 +1,131 @@
+/* =========================================================
+   ARCA LUMINOSA — DESIGN TOKENS
+   Fundación de rescate animal · Bogotá, Colombia
+   ========================================================= */
+
+:root{
+
+  /* ---- Color primitives ------------------------------- */
+  --green-900:#1F3306;
+  --green-800:#2E4A0C;
+  --green-700:#436B12;
+  --green-600:#5C8E1C;
+  --green-500:#77B62A;   /* brand primary */
+  --green-400:#93CE4C;
+  --green-300:#B8E07E;
+  --green-200:#DCF0BB;
+  --green-100:#EFF8DE;
+  --green-50: #F7FCF0;
+
+  --ink-900:#12140F;     /* warm near-black, used for text */
+  --ink-700:#33362C;
+  --ink-500:#5B5F51;
+  --ink-300:#8E9282;
+  --ink-200:#C4C8B8;
+  --ink-100:#E4E7DA;
+
+  --cream-100:#FBF9F2;   /* page background */
+  --cream-0:  #FFFFFF;
+
+  --red-600:#B8241E;
+  --red-500:#D7452E;
+  --red-100:#FBE3DF;
+
+  --sun-500:#F2A93C;
+  --sun-100:#FCEACB;
+
+  --sky-500:#3E8FB0;
+  --sky-100:#DCEEF3;
+
+  /* ---- Semantic colors --------------------------------- */
+  --color-bg:            var(--cream-100);
+  --color-surface:       var(--cream-0);
+  --color-text:          var(--ink-900);
+  --color-text-muted:    var(--ink-500);
+  --color-border:        var(--ink-100);
+
+  --color-primary:       var(--green-500);
+  --color-primary-dark:  var(--green-700);
+  --color-primary-ink:   var(--green-900);
+  --color-primary-tint:  var(--green-100);
+
+  --color-danger:        var(--red-500);
+  --color-danger-tint:   var(--red-100);
+
+  --color-accent-sun:    var(--sun-500);
+  --color-accent-sun-tint: var(--sun-100);
+  --color-accent-sky:    var(--sky-500);
+  --color-accent-sky-tint: var(--sky-100);
+
+  --color-focus:         var(--sky-500);
+
+  /* ---- Typography --------------------------------------- */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+
+  --fs-2xs: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --fs-xs:  clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
+  --fs-sm:  clamp(0.92rem, 0.9rem + 0.1vw, 1rem);
+  --fs-base:clamp(1rem, 0.97rem + 0.15vw, 1.125rem);
+  --fs-md:  clamp(1.15rem, 1.1rem + 0.25vw, 1.35rem);
+  --fs-lg:  clamp(1.4rem, 1.3rem + 0.5vw, 1.85rem);
+  --fs-xl:  clamp(1.9rem, 1.6rem + 1.2vw, 2.75rem);
+  --fs-2xl: clamp(2.4rem, 1.9rem + 2vw, 3.75rem);
+  --fs-3xl: clamp(3rem, 2.2rem + 3.2vw, 5.5rem);
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-normal: 1.55;
+  --lh-loose: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
+
+  /* ---- Spacing (8px base scale) -------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  --section-pad: clamp(3.5rem, 3rem + 3vw, 7rem);
+  --container-w: 1240px;
+  --container-w-narrow: 800px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  /* ---- Shape ---------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+  --radius-blob: 63% 37% 54% 46% / 43% 45% 55% 57%;
+
+  /* ---- Elevation -------------------------------------------- */
+  --shadow-sm: 0 2px 8px rgba(18,20,15,0.06);
+  --shadow-md: 0 12px 28px -8px rgba(18,20,15,0.16);
+  --shadow-lg: 0 28px 60px -16px rgba(18,20,15,0.24);
+  --shadow-primary: 0 14px 32px -10px rgba(67,107,18,0.45);
+
+  /* ---- Motion --------------------------------------------- */
+  --ease-out: cubic-bezier(.16,.84,.44,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --ease-back: cubic-bezier(.34,1.56,.64,1);
+  --dur-fast: .25s;
+  --dur-base: .45s;
+  --dur-slow: .8s;
+
+  --z-nav: 100;
+  --z-overlay: 200;
+  --z-toast: 300;
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{ --dur-fast:0s; --dur-base:0s; --dur-slow:0s; }
+}

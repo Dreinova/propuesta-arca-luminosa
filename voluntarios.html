@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voluntariado — Arca Luminosa</title>
+<meta name="description" content="Sumate a las jornadas de voluntariado de Arca Luminosa en Bogotá y alrededores: alimentación, collares reflectivos, rescates, casitas recicladas y esterilización.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .hero{ position:relative; padding-top:calc(var(--sp-10) + 2rem); padding-bottom:var(--sp-9); overflow:hidden; }
+  .hero__bg{ position:absolute; inset:0; background:radial-gradient(120% 100% at 85% 0%, var(--green-100) 0%, var(--cream-100) 55%); z-index:-2; }
+  .hero__grid{ display:grid; gap:var(--sp-8); align-items:center; }
+  @media(min-width:960px){ .hero__grid{ grid-template-columns:1.05fr .95fr; } }
+  .hero__media{ position:relative; }
+  .hero__media-frame{ border-radius:var(--radius-xl); overflow:hidden; aspect-ratio:4/5; box-shadow:var(--shadow-lg); position:relative; }
+  .hero__media-frame img{ width:100%; height:100%; object-fit:cover; }
+  .hero__badge-float{
+    position:absolute; left:-1.5rem; bottom:1.8rem; background:var(--cream-0); border-radius:var(--radius-lg);
+    padding:var(--sp-4) var(--sp-5); box-shadow:var(--shadow-md); display:flex; align-items:center; gap:.9rem; max-width:230px;
+  }
+  @media(max-width:539px){ .hero__badge-float{ left:.75rem; } }
+  .hero__badge-float .icon-tile{ background:var(--red-100); color:var(--red-600); }
+  .hero__ring{ position:absolute; top:-2rem; right:-2rem; width:9rem; height:9rem; border:2px dashed var(--green-300); border-radius:50%; z-index:-1; }
+
+  .pillar-card{ padding:var(--sp-6); border-radius:var(--radius-lg); background:var(--color-surface); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:var(--sp-4); height:100%; }
+
+  .req-list{ position:relative; padding-left:var(--sp-7); }
+  .req-list::before{ content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px; background:var(--ink-100); }
+  .req-item{ position:relative; padding-bottom:var(--sp-7); }
+  .req-item:last-child{ padding-bottom:0; }
+  .req-item::before{
+    content:""; position:absolute; left:calc(-1 * var(--sp-7) + 3px); top:6px;
+    width:16px; height:16px; border-radius:50%; background:var(--color-primary);
+    box-shadow:0 0 0 5px var(--green-100);
+  }
+  .req-item__num{ font-family:var(--font-display); font-style:italic; color:var(--color-primary-dark); font-size:var(--fs-md); }
+
+  .story-card{ position:relative; border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:3/4; }
+  .story-card img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-out); }
+  .story-card:hover img{ transform:scale(1.07); }
+  .story-card__overlay{ position:absolute; inset:0; background:linear-gradient(0deg, rgba(18,20,15,.88) 0%, rgba(18,20,15,.15) 55%, transparent 75%); display:flex; flex-direction:column; justify-content:flex-end; padding:var(--sp-6); color:#fff; }
+  .story-card__overlay .badge{ align-self:flex-start; margin-bottom:var(--sp-3); }
+
+  .cta-band{ position:relative; border-radius:var(--radius-xl); overflow:hidden; padding:var(--sp-9) var(--gutter); text-align:center; background:var(--color-primary-ink); }
+  .cta-band::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 80% at 20% 20%, rgba(119,182,42,.35), transparent), radial-gradient(50% 70% at 85% 90%, rgba(215,69,46,.25), transparent); }
+  .cta-band > *{ position:relative; }
+
+  .ambassador-band{ position:relative; border-radius:var(--radius-xl); overflow:hidden; padding:var(--sp-9) var(--gutter); background:var(--color-primary-ink); text-align:center; }
+  .ambassador-band::before{ content:""; position:absolute; inset:0; background:radial-gradient(70% 90% at 80% 10%, rgba(119,182,42,.3), transparent); }
+  .ambassador-band > *{ position:relative; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="adoptar.html">Adoptar</a>
+      <div class="nav-item-drop">
+        <a href="voluntarios.html" class="is-active">Voluntariado
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8.5 12 15l7-6.5"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="voluntarios.html" class="is-active">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de rescate y adopción</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="arca-plus.html" class="btn btn--ghost btn--sm" style="display:none">Arca+</a>
+      <a href="dona.html" class="btn btn--donate btn--sm" data-magnetic>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+        Donar
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="adoptar.html">Adoptar</a></li>
+    <li><a href="voluntarios.html">Voluntariado</a></li>
+    <li><a href="hogar-de-paso.html">Hogar de paso</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tienda.html">Tienda</a></li>
+    <li><a href="arca-plus.html">Arca+</a></li>
+    <li><a href="dona.html">Donar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" data-parallax-wrap>
+    <div class="hero__bg"></div>
+    <div class="container">
+      <div class="hero__grid">
+        <div data-hero-in>
+          <p class="eyebrow" data-hero-in>Voluntariado · Bogotá y alrededores</p>
+          <h1 style="margin-top:1.1rem;" data-hero-in>Ponele las manos a la <em>causa</em></h1>
+          <p class="lede" style="margin-top:1.4rem" data-hero-in>
+            Participá en nuestras jornadas de voluntariado en Bogotá y alrededores. Alimentá perritos callejeros, colocá collares reflectivos, ayudá en rescates de animales vulnerables, construí casitas con material reciclado, o asistí en jornadas de esterilización y cuidado postoperatorio.
+          </p>
+          <div class="cluster gap-3" style="margin-top:2rem" data-hero-in>
+            <a href="https://goo.gl/forms/y6eM6gVVfw5whLS72" target="_blank" rel="noopener" class="btn btn--primary" data-magnetic>
+              Inscribite como voluntario
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#jornadas" class="btn btn--ghost" data-magnetic>Ver tipos de jornada</a>
+          </div>
+        </div>
+        <div class="hero__media" data-hero-in>
+          <div class="hero__ring"></div>
+          <div class="hero__media-frame">
+            <img data-parallax data-speed="-0.4" src="assets/img/hero-voluntaria-perro.jpg" alt="Voluntaria de Arca Luminosa colocando un collar reflectivo a un perrito callejero">
+          </div>
+          <div class="hero__badge-float">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.8 13.6c2.5.4 4.2 2.5 4.2 5.4"/></svg>
+            </div>
+            <div>
+              <strong style="font-family:var(--font-display); font-size:var(--fs-sm); display:block;">Jornadas todo el año<br>en Bogotá</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TIPOS DE JORNADA ================= -->
+  <section class="section section--surface" id="jornadas">
+    <div class="container">
+      <div class="text-center" data-reveal style="max-width:640px; margin-inline:auto;">
+        <p class="eyebrow" style="justify-content:center">¿En qué podés ayudar?</p>
+        <h2 style="margin-top:1rem">Cinco maneras de sumarte en las jornadas</h2>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--sp-8)" data-stagger-grid>
+        <article class="pillar-card">
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="16.5" rx="7.5" ry="3"/><path d="M6 15V8.5a6 6 0 0 1 12 0V15"/></svg>
+          </div>
+          <h3>Alimentación</h3>
+          <p class="text-muted">Recorremos puntos de la ciudad alimentando a los perritos y gatitos que viven en la calle.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.3v1.9M12 13.8v1.9M8.3 12h1.9M13.8 12h1.9"/></svg>
+          </div>
+          <h3>Collares reflectivos</h3>
+          <p class="text-muted">Colocamos Collares de Vida para que los perritos callejeros sean visibles de noche y evitar accidentes.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+          </div>
+          <h3>Rescates</h3>
+          <p class="text-muted">Ayudamos a rescatar animales en situación de vulnerabilidad, junto a nuestro equipo y red de hogares de paso.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 3.5 20.5 11"/><path d="M5.5 9.5V20h13V9.5"/><path d="M9.7 20v-6.2h4.6V20"/></svg>
+          </div>
+          <h3>Casitas recicladas</h3>
+          <p class="text-muted">Construimos casitas con material reciclado para dar refugio a los animales que viven a la intemperie.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6l-9.5 9.5-4 4.5 4.5-4L18.5 6.5z"/><path d="M13.5 8.5 15.5 10.5M11 11l2 2"/></svg>
+          </div>
+          <h3>Esterilización</h3>
+          <p class="text-muted">Asistimos en jornadas gratuitas de esterilización y en el cuidado postoperatorio de perros y gatos en zonas de sobrepoblación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EN LAS JORNADAS ================= -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="cluster" style="justify-content:space-between; align-items:flex-end;" data-reveal>
+        <div>
+          <p class="eyebrow">Así se ven nuestras jornadas</p>
+          <h2 style="margin-top:1rem; max-width:22ch">Voluntarios de Arca Luminosa en acción</h2>
+        </div>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--sp-7)" data-stagger-grid>
+        <div class="story-card">
+          <img src="assets/img/voluntariado-esterilizacion.jpg" alt="Voluntaria de Arca Luminosa cargando con cariño a un perrito durante una jornada de esterilización">
+          <div class="story-card__overlay">
+            <span class="badge badge--green">Esterilización</span>
+            <p style="color:var(--green-100)">Cuidado antes y después de la cirugía.</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <img src="assets/img/voluntaria-perro-taller.jpg" alt="Voluntaria de Arca Luminosa acariciando a un perrito rescatado bajo techo">
+          <div class="story-card__overlay">
+            <span class="badge badge--sun">Rescates</span>
+            <p style="color:var(--green-100)">Primeros cuidados a animales vulnerables.</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <img src="assets/img/educacion-1.jpg" alt="Voluntarias de Arca Luminosa con niñas en un taller de educación sobre tenencia responsable">
+          <div class="story-card__overlay">
+            <span class="badge badge--sky">Educación</span>
+            <p style="color:var(--green-100)">Talleres #AmorAnimal en comunidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLO NECESITAS ================= -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start; gap:var(--sp-9)">
+        <div data-reveal>
+          <p class="eyebrow">Antes de inscribirte</p>
+          <h2 style="margin-top:1rem">Solo necesitás</h2>
+          <p class="lede" style="margin-top:1.5rem">
+            Ser voluntario de Arca Luminosa es simple. Estos son los cuatro requisitos para sumarte a cualquiera de nuestras jornadas.
+          </p>
+          <a href="https://goo.gl/forms/y6eM6gVVfw5whLS72" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top:var(--sp-6)" data-magnetic>Inscribite como voluntario</a>
+        </div>
+        <ol class="req-list" data-reveal-group style="list-style:none">
+          <li class="req-item">
+            <span class="req-item__num">01</span>
+            <p style="margin-top:.4rem">Ser mayor de edad; si no lo sos, necesitás autorización firmada por tus acudientes.</p>
+          </li>
+          <li class="req-item">
+            <span class="req-item__num">02</span>
+            <p style="margin-top:.4rem">Completar el proceso de inscripción y firmar la carta de exoneración de responsabilidades.</p>
+          </li>
+          <li class="req-item">
+            <span class="req-item__num">03</span>
+            <p style="margin-top:.4rem">Ver el <a href="https://www.youtube.com/watch?v=jRGreTshOus" target="_blank" rel="noopener" style="color:var(--color-primary-dark); font-weight:700; text-decoration:underline;">video tutorial</a> para aprender a colocar los collares reflectivos.</p>
+          </li>
+          <li class="req-item">
+            <span class="req-item__num">04</span>
+            <p style="margin-top:.4rem">Tener toda la actitud y disposición para ayudar.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA VOLUNTARIOS ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <p class="eyebrow" style="justify-content:center; color:var(--green-300)">Tu tiempo también rescata vidas</p>
+        <h2 style="color:#fff; margin-top:1rem; max-width:26ch; margin-inline:auto;">Sumate a la próxima jornada de Arca Luminosa</h2>
+        <div class="cluster gap-3" style="justify-content:center; margin-top:2rem">
+          <a href="https://goo.gl/forms/y6eM6gVVfw5whLS72" target="_blank" rel="noopener" class="btn btn--primary" data-magnetic>Inscribite como voluntario</a>
+          <a href="dona.html" class="btn btn--ghost-light" data-magnetic>Donar en cambio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EMBAJADORES ================= -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="ambassador-band" data-reveal>
+        <p class="eyebrow" style="justify-content:center; color:var(--green-300)">Voluntariado a distancia</p>
+        <h2 style="color:#fff; margin-top:1rem; max-width:28ch; margin-inline:auto;">¿Querés ser voluntario pero no vivís en Bogotá?</h2>
+        <p class="lede" style="margin-top:1rem; margin-inline:auto; color:var(--green-100)">Vos podés llevar nuestro proyecto a tu ciudad o país — iluminar vidas es muy fácil.</p>
+        <div class="cluster gap-3" style="justify-content:center; margin-top:2rem">
+          <a href="https://www.arcaluminosa.org/embajadores" target="_blank" rel="noopener" class="btn btn--primary" data-magnetic>Convertite en Embajador</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+        <p style="margin-top:1rem;color:var(--green-200);max-width:32ch">Iluminando la vida de los animales callejeros de Colombia desde 2017.</p>
+        <div class="social-row" style="margin-top:1.5rem">
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg>
+          </a>
+          <a href="https://www.facebook.com/ArcaLuminosa/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21v-7.2h2.4l.4-3h-2.8V8.8c0-.9.3-1.5 1.6-1.5h1.3V4.7c-.2 0-1-.1-1.9-.1-2.9 0-4 1.8-4 4.6v2.6H9v3h2.5V21z"/></svg>
+          </a>
+          <a href="http://www.twitter.com/arcaluminosa" target="_blank" rel="noopener" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          </a>
+          <a href="https://youtu.be/pOTx8JRlg14" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.3 9.6v4.8l4.4-2.4z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <div class="footer-links">
+          <a href="index.html#historia">Nuestra historia</a>
+          <a href="blog.html">Blog</a>
+          <a href="difusiones.html">Difusiones</a>
+          <a href="transparencia.html">Transparencia DIAN</a>
+        </div>
+      </div>
+      <div>
+        <h4>Involúcrate</h4>
+        <div class="footer-links">
+          <a href="adoptar.html">Adoptar</a>
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de adopción</a>
+          <a href="arca-plus.html">Arca+</a>
+        </div>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <div class="footer-links">
+          <a href="dona.html">Donar</a>
+          <a href="tienda.html">Tienda solidaria</a>
+          <a href="agenda.html">Agenda una jornada</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Arca Luminosa · Fundación sin ánimo de lucro · Bogotá, Colombia</span>
+      <span>Diseñado con <svg width="12" height="12" style="display:inline;vertical-align:-1px" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg> para quienes no tienen voz</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top btn-circle" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

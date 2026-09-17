@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Difusiones — Arca Luminosa</title>
+<meta name="description" content="¿Tienes un peludito en adopción, perdido o encontrado? Te contamos qué información enviarnos para ayudarte a difundir tu caso en @adoptalos.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .dif-hero{ position:relative; padding-top:calc(var(--sp-10) + 1rem); padding-bottom:var(--sp-9); overflow:hidden; }
+  .dif-hero__bg{ position:absolute; inset:0; background:radial-gradient(120% 100% at 85% 0%, var(--green-100) 0%, var(--cream-100) 55%); z-index:-1; }
+  .dif-hero__grid{ display:grid; gap:var(--sp-8); align-items:center; }
+  @media(min-width:960px){ .dif-hero__grid{ grid-template-columns:1.05fr .95fr; } }
+  .dif-hero__frame{ border-radius:var(--radius-xl); overflow:hidden; aspect-ratio:4/5; box-shadow:var(--shadow-lg); }
+  .dif-hero__frame img{ width:100%; height:100%; object-fit:cover; }
+
+  .case-card{ padding:var(--sp-6); border-radius:var(--radius-lg); background:var(--color-surface); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:var(--sp-4); height:100%; }
+  .case-card__badge{ align-self:flex-start; }
+  .check-list{ display:flex; flex-direction:column; gap:.7rem; margin-top:.2rem; }
+  .check-list li{ display:flex; gap:.6rem; align-items:flex-start; font-size:var(--fs-sm); color:var(--color-text-muted); }
+  .check-list li svg{ flex-shrink:0; width:1.2rem; height:1.2rem; margin-top:.1rem; color:var(--color-primary-dark); }
+  .case-card__cta{ margin-top:auto; padding-top:var(--sp-4); }
+
+  .dif-cta{ position:relative; border-radius:var(--radius-xl); overflow:hidden; padding:var(--sp-9) var(--gutter); text-align:center; background:var(--color-primary-ink); }
+  .dif-cta::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 80% at 20% 20%, rgba(119,182,42,.35), transparent), radial-gradient(50% 70% at 85% 90%, rgba(215,69,46,.25), transparent); }
+  .dif-cta > *{ position:relative; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="adoptar.html">Adoptar</a>
+      <div class="nav-item-drop">
+        <a href="voluntarios.html">Voluntariado
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8.5 12 15l7-6.5"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de rescate y adopción</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="arca-plus.html" class="btn btn--ghost btn--sm" style="display:none">Arca+</a>
+      <a href="dona.html" class="btn btn--donate btn--sm" data-magnetic>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+        Donar
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="adoptar.html">Adoptar</a></li>
+    <li><a href="voluntarios.html">Voluntariado</a></li>
+    <li><a href="hogar-de-paso.html">Hogar de paso</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tienda.html">Tienda</a></li>
+    <li><a href="arca-plus.html">Arca+</a></li>
+    <li><a href="dona.html">Donar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <!--
+    IMPORTANTE: esta página es instruccional (cómo pedir difusión), no un listado de casos reales.
+    El sitio original (Wix) tampoco mostraba casos reales acá: era texto explicativo + un formulario
+    embebido que no llegó a capturarse en el snapshot. No se inventan casos de animales perdidos/
+    encontrados/en adopción — solo se explica qué información pedimos para cada tipo de caso.
+  -->
+  <section class="dif-hero">
+    <div class="dif-hero__bg"></div>
+    <div class="container">
+      <div class="dif-hero__grid">
+        <div data-reveal>
+          <p class="eyebrow">Difusión de casos</p>
+          <h1 style="margin-top:1.1rem">¿Tienes un caso y necesitas difundir?</h1>
+          <p class="lede" style="margin-top:1.4rem">
+            Si tienes un perrito o gatito que está en adopción, perdido o lo encontraste extraviado, te ayudamos publicándolo en <strong>@adoptalos</strong> — una de las plataformas de difusión más grandes de Colombia para encontrar adoptantes, animales perdidos y encontrados.
+          </p>
+          <div class="cluster gap-3" style="margin-top:2rem">
+            <a href="mailto:difusionesarca@gmail.com" class="btn btn--primary" data-magnetic>
+              Escribir a difusionesarca@gmail.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            </a>
+            <a href="https://www.instagram.com/adoptalos/" target="_blank" rel="noopener" class="btn btn--ghost" data-magnetic>Ver @adoptalos</a>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="dif-hero__frame">
+            <img src="assets/img/difusion-collar-reflectivo.png" alt="Perrito callejero con collar reflectivo de Arca Luminosa, con la frase 'No estoy perdido, busco un hogar'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TIPOS DE CASO ================= -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="text-center" data-reveal style="max-width:640px; margin-inline:auto;">
+        <p class="eyebrow" style="justify-content:center">Tres tipos de caso</p>
+        <h2 style="margin-top:1rem">¿Qué información necesitamos según tu caso?</h2>
+        <p class="lede" style="margin-top:1rem; margin-inline:auto;">Diligencia la información y envía las fotos del peludito a <strong>difusionesarca@gmail.com</strong>. Mientras más completos los datos, más rápido encontramos una solución.</p>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--sp-8)" data-stagger-grid>
+
+        <article class="case-card">
+          <span class="badge badge--green case-card__badge">Adopción</span>
+          <div class="icon-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+          </div>
+          <h3>¿Tienes un peludito en adopción?</h3>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Fotos claras y recientes, con buena luz</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Edad aproximada, tamaño y raza (si se conoce)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Estado de salud: vacunas y esterilización</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Temperamento y con quién convive bien</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Ciudad/localidad y datos de contacto</li>
+          </ul>
+          <div class="case-card__cta">
+            <a href="mailto:difusionesarca@gmail.com" class="btn btn--ghost btn--sm btn--block">Enviar caso de adopción</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <span class="badge badge--red case-card__badge">Perdido</span>
+          <div class="icon-tile" style="background:var(--red-100); color:var(--red-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="10.5" r="7"/><path d="M16.2 15.5 21 20.5"/></svg>
+          </div>
+          <h3>¿Se te perdió tu perrito o gatito?</h3>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Foto reciente y clara del animal</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Fecha y lugar exacto donde se perdió</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Señas particulares (collar, manchas, cicatrices)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Zona donde se ha visto o podría estar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Tu número de contacto para que te avisen</li>
+          </ul>
+          <div class="case-card__cta">
+            <a href="mailto:difusionesarca@gmail.com" class="btn btn--ghost btn--sm btn--block">Enviar caso de perdido</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <span class="badge badge--sun case-card__badge">Encontrado</span>
+          <div class="icon-tile" style="background:var(--sun-100); color:#8a5a12;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 3.5 20.5 11"/><path d="M5.5 9.5V20h13V9.5"/><path d="M9.7 20v-6.2h4.6V20"/></svg>
+          </div>
+          <h3>¿Encontraste un animal extraviado?</h3>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Foto del animal que encontraste</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Fecha y lugar exacto donde lo encontraste</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Estado en el que se encuentra (salud, comportamiento)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Si lo tienes contigo o dónde está resguardado</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Tus datos de contacto para que el dueño te ubique</li>
+          </ul>
+          <div class="case-card__cta">
+            <a href="mailto:difusionesarca@gmail.com" class="btn btn--ghost btn--sm btn--block">Enviar caso encontrado</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CÓMO FUNCIONA ================= -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:center; gap:var(--sp-9)">
+        <div data-reveal>
+          <p class="eyebrow">Cómo funciona</p>
+          <h2 style="margin-top:1rem">Tres pasos para difundir tu caso</h2>
+          <p class="lede" style="margin-top:1.2rem">Nuestro equipo revisa cada solicitud y la comparte con la red de @adoptalos, que llega a miles de personas en toda Colombia.</p>
+        </div>
+        <div class="timeline" data-reveal-group>
+          <div class="timeline-item">
+            <span class="timeline-item__year">Paso 1</span>
+            <p style="margin-top:.4rem">Reúne la información de tu caso según la categoría: adopción, perdido o encontrado.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-item__year">Paso 2</span>
+            <p style="margin-top:.4rem">Envía las fotos del peludito y los datos al correo <strong>difusionesarca@gmail.com</strong>.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-item__year">Paso 3</span>
+            <p style="margin-top:.4rem">Publicamos tu caso en <strong>@adoptalos</strong> para que llegue a la mayor cantidad de personas posible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FINAL ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="dif-cta" data-reveal>
+        <p class="eyebrow" style="justify-content:center; color:var(--green-300)">Ayudanos a encontrarle un hogar</p>
+        <h2 style="color:#fff; margin-top:1rem; max-width:26ch; margin-inline:auto;">Cada caso difundido es una nueva oportunidad</h2>
+        <div class="cluster gap-3" style="justify-content:center; margin-top:2rem">
+          <a href="mailto:difusionesarca@gmail.com" class="btn btn--primary" data-magnetic>Escribir por correo</a>
+          <a href="https://www.instagram.com/adoptalos/" target="_blank" rel="noopener" class="btn btn--ghost-light" data-magnetic>Ver @adoptalos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+        <p style="margin-top:1rem;color:var(--green-200);max-width:32ch">Iluminando la vida de los animales callejeros de Colombia desde 2017.</p>
+        <div class="social-row" style="margin-top:1.5rem">
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg>
+          </a>
+          <a href="https://www.facebook.com/ArcaLuminosa/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21v-7.2h2.4l.4-3h-2.8V8.8c0-.9.3-1.5 1.6-1.5h1.3V4.7c-.2 0-1-.1-1.9-.1-2.9 0-4 1.8-4 4.6v2.6H9v3h2.5V21z"/></svg>
+          </a>
+          <!-- Twitter/X e YouTube agregados a partir del contenido real de contacto (no estaban en el footer de referencia de index.html) -->
+          <a href="http://www.twitter.com/arcaluminosa" target="_blank" rel="noopener" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          </a>
+          <a href="https://youtu.be/pOTx8JRlg14" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.3 9.6v4.8l4.4-2.4z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <div class="footer-links">
+          <a href="index.html#historia">Nuestra historia</a>
+          <a href="blog.html">Blog</a>
+          <a href="difusiones.html">Difusiones</a>
+          <a href="transparencia.html">Transparencia DIAN</a>
+        </div>
+      </div>
+      <div>
+        <h4>Involúcrate</h4>
+        <div class="footer-links">
+          <a href="adoptar.html">Adoptar</a>
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de adopción</a>
+          <a href="arca-plus.html">Arca+</a>
+        </div>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <div class="footer-links">
+          <a href="dona.html">Donar</a>
+          <a href="tienda.html">Tienda solidaria</a>
+          <a href="agenda.html">Agenda una jornada</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Arca Luminosa · Fundación sin ánimo de lucro · Bogotá, Colombia</span>
+      <span>Diseñado con <svg width="12" height="12" style="display:inline;vertical-align:-1px" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg> para quienes no tienen voz</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top btn-circle" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

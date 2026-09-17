@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tienda solidaria — Arca Luminosa</title>
+<meta name="description" content="Tienda solidaria de Arca Luminosa: hoodies, cuellos multiusos, collares reflectivos y más. Toda la ganancia apoya el rescate de perros y gatos callejeros en Bogotá.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .shop-hero{ position:relative; padding-top:calc(var(--sp-10) + 1rem); padding-bottom:var(--sp-8); overflow:hidden; }
+  .shop-hero__bg{ position:absolute; inset:0; background:radial-gradient(120% 100% at 85% 0%, var(--green-100) 0%, var(--cream-100) 55%); z-index:-1; }
+
+  .shop-toolbar{ display:flex; flex-wrap:wrap; gap:var(--sp-4); justify-content:space-between; align-items:center; margin-bottom:var(--sp-7); }
+
+  .card-product{ background:var(--color-surface); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); overflow:hidden; transition:transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+  .card-product:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+  .card-product__media{ position:relative; }
+  .card-product__media img{ width:100%; height:100%; object-fit:cover; }
+  .card-product__badge{ position:absolute; top:var(--sp-3); left:var(--sp-3); }
+  .card-product__name{ font-family:var(--font-display); font-size:var(--fs-md); color:var(--color-primary-ink); }
+  .card-product__foot{ display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3); margin-top:.4rem; }
+
+  .shop-note{ display:flex; gap:var(--sp-4); align-items:flex-start; padding:var(--sp-6); border-radius:var(--radius-lg); background:var(--color-primary-tint); }
+
+  .shop-cta{ position:relative; border-radius:var(--radius-xl); overflow:hidden; padding:var(--sp-9) var(--gutter); text-align:center; background:var(--color-primary-ink); }
+  .shop-cta::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 80% at 20% 20%, rgba(119,182,42,.35), transparent), radial-gradient(50% 70% at 85% 90%, rgba(215,69,46,.25), transparent); }
+  .shop-cta > *{ position:relative; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="adoptar.html">Adoptar</a>
+      <div class="nav-item-drop">
+        <a href="voluntarios.html">Voluntariado
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8.5 12 15l7-6.5"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de rescate y adopción</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="tienda.html" class="is-active">Tienda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="arca-plus.html" class="btn btn--ghost btn--sm" style="display:none">Arca+</a>
+      <a href="dona.html" class="btn btn--donate btn--sm" data-magnetic>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+        Donar
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="adoptar.html">Adoptar</a></li>
+    <li><a href="voluntarios.html">Voluntariado</a></li>
+    <li><a href="hogar-de-paso.html">Hogar de paso</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tienda.html">Tienda</a></li>
+    <li><a href="arca-plus.html">Arca+</a></li>
+    <li><a href="dona.html">Donar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="shop-hero">
+    <div class="shop-hero__bg"></div>
+    <div class="container">
+      <div data-hero-in>
+        <p class="eyebrow" data-hero-in>Tienda solidaria</p>
+        <h1 style="margin-top:1.1rem; max-width:18ch" data-hero-in>Vestí la causa <em>y ayudá a rescatar</em></h1>
+        <p class="lede" style="margin-top:1.4rem" data-hero-in>
+          Cada producto de la tienda de Arca Luminosa está pensado por y para la comunidad #AmorAnimal. Toda la ganancia apoya nuestra misión: collares de vida, esterilizaciones y rescates.
+        </p>
+        <div class="cluster gap-3" style="margin-top:2rem" data-hero-in>
+          <span class="badge badge--green">Toda la ganancia apoya nuestra misión</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTOS ================= -->
+  <section class="section section--surface">
+    <div class="container">
+
+      <div class="shop-toolbar" data-reveal>
+        <div>
+          <p class="eyebrow">Catálogo</p>
+          <h2 style="margin-top:.6rem">10 productos hechos con causa</h2>
+        </div>
+        <div class="filter-row" data-filter-group="[data-product]">
+          <button class="filter-pill is-active" data-filter="all">Todos</button>
+          <button class="filter-pill" data-filter="ropa">Ropa</button>
+          <button class="filter-pill" data-filter="accesorios">Accesorios</button>
+          <button class="filter-pill" data-filter="hogar">Hogar y cuidado</button>
+        </div>
+      </div>
+
+      <!--
+        No hay carrito de compras real: este sitio es estático y no tiene backend de pagos.
+        Los botones "Comprar" son decorativos y enlazan a contacto.html / redes sociales para
+        coordinar la compra directamente con la fundación.
+      -->
+      <div class="grid grid--4" data-stagger-grid>
+
+        <article class="card-product" data-product data-tags="ropa">
+          <div class="card-product__media">
+            <span class="badge badge--red card-product__badge">Producto nuevo</span>
+            <img src="assets/img/tienda-hoodie-causa.jpg" alt="Hoodie Rebelde con Causa, segunda edición, en rosa, amarillo y verde agua">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Hoodie con causa</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Buzo con capota, edición #RebeldeConCausa. Disponible en varios colores.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$80.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="accesorios">
+          <div class="card-product__media">
+            <span class="badge badge--green card-product__badge">Nuevo</span>
+            <img src="assets/img/tienda-cuello-gato.jpg" alt="Cuello multiusos con diseño de gato ilustrado">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Cuello multiusos gato</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Buff multiusos con arte original felino. Disponible por tamaño.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$50.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="accesorios">
+          <div class="card-product__media">
+            <span class="badge badge--green card-product__badge">Nuevo</span>
+            <img src="assets/img/tienda-cuello-perro.jpg" alt="Cuello multiusos con diseño de perro ilustrado">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Cuello multiusos perro</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Buff multiusos con arte original canino. Disponible por tamaño.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$50.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="accesorios">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-canguro-arca.jpg" alt="Canguro (riñonera) negro con logo de Arca Luminosa">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Canguro Arca</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Riñonera resistente con el logo de la fundación, ideal para caminatas y voluntariado.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$30.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="hogar">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-cepillo-bambu.jpg" alt="Cepillo de dientes de bambú en varios colores">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Cepillo de bambú</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Cepillo de dientes biodegradable, sin residuos plásticos. Disponible por tamaño y color.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$20.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="hogar">
+          <div class="card-product__media">
+            <span class="badge badge--sun card-product__badge">Más vendido</span>
+            <img src="assets/img/tienda-bolsas-compostables.jpg" alt="Paquetes de bolsas compostables para heces de mascota">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Bolsas compostables</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">4 paquetes x 120 bolsas para recoger las heces de tu mascota, 100% compostables.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$35.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-product" data-product data-tags="accesorios">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-collar-reflectivo.jpg" alt="Perrito callejero con collar reflectivo Arca Luminosa">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Collares reflectivos Arca</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">El mismo Collar de Vida que colocamos en nuestras jornadas — llevá uno a tu perro o donalo a la calle.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$6.500 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- precio normalizado, verificar con la fundación -->
+        <article class="card-product" data-product data-tags="ropa">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-gorra-arca.jpg" alt="Gorra unisex verde con logo de Arca Luminosa">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Gorra Arca</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Gorra unisex, disponible para talles pequeños y grandes.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$20.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- precio normalizado, verificar con la fundación -->
+        <article class="card-product" data-product data-tags="ropa">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-buzo-arca.jpg" alt="Buzo básico azul marino con logo de Arca Luminosa">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Buzo básico Arca</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Buzo con capota básico, en azul marino con logo de la fundación.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$85.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- precio normalizado, verificar con la fundación -->
+        <article class="card-product" data-product data-tags="ropa">
+          <div class="card-product__media">
+            <img src="assets/img/tienda-camiseta-reciclable.jpg" alt="Camiseta gris reciclable con arte ilustrado Arca">
+          </div>
+          <div class="card-product__body">
+            <h3 class="card-product__name">Camiseta reciclable</h3>
+            <p class="text-muted" style="font-size:var(--fs-sm)">Camiseta de algodón reciclable con arte original. Disponible por tamaño.</p>
+            <div class="card-product__foot">
+              <span class="card-product__price">$40.000 COP</span>
+              <a href="contacto.html" class="btn btn--ghost btn--sm">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="shop-note" style="margin-top:var(--sp-8)" data-reveal>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5l3 2"/></svg>
+        </div>
+        <div>
+          <h4>¿Cómo comprar?</h4>
+          <p class="text-muted" style="margin-top:.4rem">
+            Todavía no tenemos pasarela de pagos en línea. Escribinos por <a href="contacto.html" style="text-decoration:underline">el formulario de contacto</a> o por nuestras redes sociales contándonos qué producto querés y coordinamos el pago y la entrega o el envío.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CTA DONAR ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="shop-cta" data-reveal>
+        <p class="eyebrow" style="justify-content:center; color:var(--green-300)">Gracias por sumarte</p>
+        <h2 style="color:#fff; margin-top:1rem; max-width:26ch; margin-inline:auto;">Cada compra es un collar de vida más en la calle</h2>
+        <div class="cluster gap-3" style="justify-content:center; margin-top:2rem">
+          <a href="contacto.html" class="btn btn--primary" data-magnetic>Escribinos para comprar</a>
+          <a href="dona.html" class="btn btn--ghost-light" data-magnetic>Donar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+        <p style="margin-top:1rem;color:var(--green-200);max-width:32ch">Iluminando la vida de los animales callejeros de Colombia desde 2017.</p>
+        <div class="social-row" style="margin-top:1.5rem">
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg>
+          </a>
+          <a href="https://www.facebook.com/ArcaLuminosa/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21v-7.2h2.4l.4-3h-2.8V8.8c0-.9.3-1.5 1.6-1.5h1.3V4.7c-.2 0-1-.1-1.9-.1-2.9 0-4 1.8-4 4.6v2.6H9v3h2.5V21z"/></svg>
+          </a>
+          <a href="http://www.twitter.com/arcaluminosa" target="_blank" rel="noopener" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          </a>
+          <a href="https://youtu.be/pOTx8JRlg14" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.3 9.6v4.8l4.4-2.4z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <div class="footer-links">
+          <a href="index.html#historia">Nuestra historia</a>
+          <a href="blog.html">Blog</a>
+          <a href="difusiones.html">Difusiones</a>
+          <a href="transparencia.html">Transparencia DIAN</a>
+        </div>
+      </div>
+      <div>
+        <h4>Involúcrate</h4>
+        <div class="footer-links">
+          <a href="adoptar.html">Adoptar</a>
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de adopción</a>
+          <a href="arca-plus.html">Arca+</a>
+        </div>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <div class="footer-links">
+          <a href="dona.html">Donar</a>
+          <a href="tienda.html">Tienda solidaria</a>
+          <a href="agenda.html">Agenda una jornada</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Arca Luminosa · Fundación sin ánimo de lucro · Bogotá, Colombia</span>
+      <span>Diseñado con <svg width="12" height="12" style="display:inline;vertical-align:-1px" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg> para quienes no tienen voz</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top btn-circle" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

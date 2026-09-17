@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — Arca Luminosa</title>
+<meta name="description" content="Sistema de diseño: colores, tipografía, componentes y animaciones del sitio de Arca Luminosa.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  body{ background:var(--cream-100); }
+  .ds-shell{ display:grid; grid-template-columns:250px 1fr; min-height:100vh; }
+  .ds-side{
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+    background:var(--color-primary-ink); color:var(--green-100);
+    padding:var(--sp-6) var(--sp-5);
+  }
+  .ds-side .brand{ color:#fff; margin-bottom:var(--sp-6); }
+  .ds-side nav{ display:flex; flex-direction:column; gap:.3rem; }
+  .ds-side nav a{ font-size:var(--fs-sm); font-weight:600; padding:.5rem .7rem; border-radius:var(--radius-sm); color:var(--green-200); }
+  .ds-side nav a:hover{ background:rgba(255,255,255,.08); color:#fff; }
+  .ds-side small{ display:block; margin:var(--sp-5) 0 .4rem; text-transform:uppercase; letter-spacing:var(--tracking-wide); font-size:var(--fs-2xs); color:var(--green-400); }
+
+  .ds-main{ padding:var(--sp-8) var(--sp-8) var(--sp-10); max-width:1180px; }
+  .ds-block{ margin-bottom:var(--sp-10); scroll-margin-top:2rem; }
+  .ds-block > .eyebrow{ margin-bottom:.6rem; }
+  .ds-block h2{ margin-bottom:var(--sp-6); }
+  .ds-note{ font-size:var(--fs-xs); color:var(--color-text-muted); font-family:"JetBrains Mono",monospace; }
+
+  .swatch-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:var(--sp-4); }
+  .swatch{ border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); }
+  .swatch__color{ height:80px; }
+  .swatch__label{ padding:.7rem .9rem; background:var(--color-surface); }
+  .swatch__label b{ display:block; font-size:var(--fs-xs); }
+  .swatch__label span{ font-family:"JetBrains Mono",monospace; font-size:var(--fs-2xs); color:var(--color-text-muted); }
+
+  .type-row{ display:flex; align-items:baseline; gap:var(--sp-5); padding-block:var(--sp-4); border-bottom:1px solid var(--color-border); }
+  .type-row .tag{ width:70px; flex-shrink:0; font-family:"JetBrains Mono",monospace; font-size:var(--fs-2xs); color:var(--color-text-muted); }
+
+  .demo-row{ display:flex; flex-wrap:wrap; gap:var(--sp-4); align-items:center; padding:var(--sp-6); background:var(--color-surface); border-radius:var(--radius-lg); }
+  .demo-row--dark{ background:var(--color-primary-ink); }
+  .code-chip{ font-family:"JetBrains Mono",monospace; font-size:var(--fs-2xs); background:var(--ink-100); padding:.2em .6em; border-radius:6px; }
+
+  .icon-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:var(--sp-3); }
+  .icon-swatch{ display:flex; flex-direction:column; align-items:center; gap:.5rem; padding:var(--sp-4); background:var(--color-surface); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); }
+  .icon-swatch svg{ width:1.7rem; height:1.7rem; color:var(--color-primary-dark); }
+  .icon-swatch span{ font-size:var(--fs-2xs); color:var(--color-text-muted); text-align:center; }
+
+  .space-row{ display:flex; align-items:center; gap:var(--sp-4); }
+  .space-bar{ background:var(--color-primary); height:18px; border-radius:4px; }
+
+  .motion-card{ padding:var(--sp-5); background:var(--color-surface); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); }
+  .motion-preview{ height:70px; display:flex; align-items:center; justify-content:center; }
+  .motion-dot{ width:20px; height:20px; border-radius:50%; background:var(--color-primary); }
+
+  table.spec{ width:100%; border-collapse:collapse; font-size:var(--fs-sm); }
+  table.spec th, table.spec td{ text-align:left; padding:.7rem .9rem; border-bottom:1px solid var(--color-border); }
+  table.spec th{ font-size:var(--fs-2xs); text-transform:uppercase; letter-spacing:var(--tracking-wide); color:var(--color-text-muted); }
+  table.spec code{ font-family:"JetBrains Mono",monospace; font-size:var(--fs-xs); background:var(--ink-100); padding:.15em .5em; border-radius:5px; }
+
+  @media (max-width:860px){ .ds-shell{ grid-template-columns:1fr; } .ds-side{ position:relative; height:auto; } }
+</style>
+</head>
+<body>
+<div class="ds-shell">
+
+  <aside class="ds-side">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="" style="height:34px"> Arca Luminosa</a>
+    <p style="font-size:var(--fs-xs); color:var(--green-300); margin-bottom:var(--sp-4)">Design System v1.0</p>
+    <nav>
+      <small>Fundamentos</small>
+      <a href="#colores">Colores</a>
+      <a href="#tipografia">Tipografía</a>
+      <a href="#espaciado">Espaciado &amp; radios</a>
+      <a href="#iconos">Iconografía</a>
+      <a href="#movimiento">Movimiento</a>
+      <small>Componentes</small>
+      <a href="#botones">Botones</a>
+      <a href="#badges">Badges</a>
+      <a href="#cards">Cards</a>
+      <a href="#formularios">Formularios</a>
+      <a href="#navegacion">Navegación</a>
+      <a href="#feedback">Acordeón &amp; progreso</a>
+      <a href="#otros">Timeline, stats &amp; quotes</a>
+      <small>&nbsp;</small>
+      <a href="index.html">← Volver al sitio</a>
+    </nav>
+  </aside>
+
+  <main class="ds-main">
+
+    <header style="margin-bottom:var(--sp-9)">
+      <p class="eyebrow">Sistema de diseño</p>
+      <h1 style="margin-top:1rem">Arca Luminosa</h1>
+      <p class="lede" style="margin-top:1rem">
+        Guía visual y de componentes del sitio. Cálido, editorial y confiable — inspirado en la luz que la fundación le devuelve a los animales de calle. Todo lo que aparece acá se usa tal cual en las 13 páginas del sitio.
+      </p>
+    </header>
+
+    <!-- ===================== COLORES ===================== -->
+    <section class="ds-block" id="colores">
+      <p class="eyebrow">Fundamentos</p>
+      <h2>Colores</h2>
+
+      <p class="ds-note" style="margin-bottom:var(--sp-4)">Primitivo → semántico. Verde tomado del logo original; negro cálido en vez de negro puro; crema en vez de blanco puro para una sensación más editorial.</p>
+
+      <h4 style="margin-bottom:var(--sp-3)">Verde — marca</h4>
+      <div class="swatch-grid" style="margin-bottom:var(--sp-6)">
+        <div class="swatch"><div class="swatch__color" style="background:var(--green-900)"></div><div class="swatch__label"><b>green-900</b><span>#1F3306</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--green-700)"></div><div class="swatch__label"><b>green-700</b><span>#436B12</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--green-500)"></div><div class="swatch__label"><b>green-500</b><span>#77B62A — primary</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--green-300)"></div><div class="swatch__label"><b>green-300</b><span>#B8E07E</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--green-100)"></div><div class="swatch__label"><b>green-100</b><span>#EFF8DE — tint</span></div></div>
+      </div>
+
+      <h4 style="margin-bottom:var(--sp-3)">Ink &amp; cream — texto y fondo</h4>
+      <div class="swatch-grid" style="margin-bottom:var(--sp-6)">
+        <div class="swatch"><div class="swatch__color" style="background:var(--ink-900)"></div><div class="swatch__label"><b>ink-900</b><span>#12140F — texto</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--ink-500)"></div><div class="swatch__label"><b>ink-500</b><span>#5B5F51 — muted</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--ink-100)"></div><div class="swatch__label"><b>ink-100</b><span>#E4E7DA — bordes</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--cream-100); border-bottom:1px solid var(--ink-100)"></div><div class="swatch__label"><b>cream-100</b><span>#FBF9F2 — bg</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--cream-0); border-bottom:1px solid var(--ink-100)"></div><div class="swatch__label"><b>cream-0</b><span>#FFFFFF — surface</span></div></div>
+      </div>
+
+      <h4 style="margin-bottom:var(--sp-3)">Acentos</h4>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch__color" style="background:var(--red-500)"></div><div class="swatch__label"><b>red-500</b><span>#D7452E — donar/urgente</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--sun-500)"></div><div class="swatch__label"><b>sun-500</b><span>#F2A93C — destacado</span></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:var(--sky-500)"></div><div class="swatch__label"><b>sky-500</b><span>#3E8FB0 — informativo</span></div></div>
+      </div>
+    </section>
+
+    <!-- ===================== TIPOGRAFÍA ===================== -->
+    <section class="ds-block" id="tipografia">
+      <p class="eyebrow">Fundamentos</p>
+      <h2>Tipografía</h2>
+      <p class="ds-note" style="margin-bottom:var(--sp-5)">Display: <b>Fraunces</b> (serif cálida, con cursiva para acentos emocionales) · Cuerpo: <b>Plus Jakarta Sans</b> (sans amigable, alta legibilidad).</p>
+
+      <div class="type-row"><span class="tag">display / h1</span><h1 style="font-size:var(--fs-3xl)">Iluminando <em>vidas</em></h1></div>
+      <div class="type-row"><span class="tag">display / h2</span><h2 style="font-size:var(--fs-2xl)">¿Qué hacemos?</h2></div>
+      <div class="type-row"><span class="tag">display / h3</span><h3 style="font-size:var(--fs-lg)">Esterilizamos con amor</h3></div>
+      <div class="type-row"><span class="tag">italic accent</span><p class="italic-accent" style="font-size:var(--fs-lg)">"No estoy perdido, busco un hogar"</p></div>
+      <div class="type-row"><span class="tag">body / lede</span><p class="lede">Desde 2017 visibilizamos, rescatamos y esterilizamos a los perros y gatos que viven en las calles de Colombia.</p></div>
+      <div class="type-row"><span class="tag">body</span><p style="font-size:var(--fs-base)">Texto de párrafo estándar para contenido general del sitio.</p></div>
+      <div class="type-row"><span class="tag">small</span><p style="font-size:var(--fs-sm); color:var(--color-text-muted)">Texto secundario, meta información, ayudas de formulario.</p></div>
+      <div class="type-row"><span class="tag">eyebrow</span><p class="eyebrow">Etiqueta de sección</p></div>
+    </section>
+
+    <!-- ===================== ESPACIADO ===================== -->
+    <section class="ds-block" id="espaciado">
+      <p class="eyebrow">Fundamentos</p>
+      <h2>Espaciado &amp; radios</h2>
+      <div class="grid grid--2" style="gap:var(--sp-7)">
+        <div>
+          <h4 style="margin-bottom:var(--sp-4)">Escala de espaciado (base 8px)</h4>
+          <div class="stack gap-3">
+            <div class="space-row"><span class="ds-note" style="width:70px">sp-2</span><div class="space-bar" style="width:var(--sp-2)"></div></div>
+            <div class="space-row"><span class="ds-note" style="width:70px">sp-4</span><div class="space-bar" style="width:var(--sp-4)"></div></div>
+            <div class="space-row"><span class="ds-note" style="width:70px">sp-6</span><div class="space-bar" style="width:var(--sp-6)"></div></div>
+            <div class="space-row"><span class="ds-note" style="width:70px">sp-8</span><div class="space-bar" style="width:var(--sp-8)"></div></div>
+            <div class="space-row"><span class="ds-note" style="width:70px">sp-10</span><div class="space-bar" style="width:var(--sp-10)"></div></div>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-bottom:var(--sp-4)">Radios</h4>
+          <div class="cluster gap-4">
+            <div style="width:70px;height:70px;background:var(--green-200);border-radius:var(--radius-sm)"></div>
+            <div style="width:70px;height:70px;background:var(--green-200);border-radius:var(--radius-md)"></div>
+            <div style="width:70px;height:70px;background:var(--green-200);border-radius:var(--radius-lg)"></div>
+            <div style="width:70px;height:70px;background:var(--green-200);border-radius:var(--radius-xl)"></div>
+            <div style="width:70px;height:70px;background:var(--green-200);border-radius:var(--radius-pill)"></div>
+          </div>
+          <p class="ds-note" style="margin-top:var(--sp-3)">sm 8px · md 16px · lg 28px · xl 40px · pill 999px</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ICONOGRAFÍA ===================== -->
+    <section class="ds-block" id="iconos">
+      <p class="eyebrow">Fundamentos</p>
+      <h2>Iconografía</h2>
+      <p class="ds-note" style="margin-bottom:var(--sp-5)">Set propio, trazo 1.8px, viewBox 24×24, color <code class="code-chip">currentColor</code>. Se insertan inline (no como sprite externo) para evitar problemas de CORS al abrir el sitio como archivo local. Definiciones de referencia en <code class="code-chip">assets/icons/sprite.svg</code>.</p>
+      <div class="icon-grid" id="icon-demo"></div>
+    </section>
+
+    <!-- ===================== MOVIMIENTO ===================== -->
+    <section class="ds-block" id="movimiento">
+      <p class="eyebrow">Fundamentos</p>
+      <h2>Movimiento (GSAP)</h2>
+      <p class="ds-note" style="margin-bottom:var(--sp-5)">Todo el movimiento vive en <code class="code-chip">js/main.js</code> vía atributos data-*, sin JS a medida por página.</p>
+      <div class="grid grid--3">
+        <div class="motion-card">
+          <div class="motion-preview" data-parallax-wrap><div class="motion-dot" data-reveal></div></div>
+          <p><code class="code-chip">data-reveal</code></p>
+          <p class="ds-note">Fade + translateY al entrar en viewport.</p>
+        </div>
+        <div class="motion-card">
+          <div class="motion-preview"><div class="motion-dot"></div></div>
+          <p><code class="code-chip">data-reveal-group</code></p>
+          <p class="ds-note">Stagger de hijos directos (.12s).</p>
+        </div>
+        <div class="motion-card">
+          <div class="motion-preview"><div class="motion-dot"></div></div>
+          <p><code class="code-chip">data-counter="2800"</code></p>
+          <p class="ds-note">Contador animado al entrar en viewport (2s, power2.out).</p>
+        </div>
+        <div class="motion-card">
+          <div class="motion-preview"><div class="motion-dot"></div></div>
+          <p><code class="code-chip">data-hero-in</code></p>
+          <p class="ds-note">Timeline de entrada del hero, stagger .12s + delay .15s.</p>
+        </div>
+        <div class="motion-card">
+          <div class="motion-preview"><button class="btn btn--primary btn--sm" data-magnetic>Hover</button></div>
+          <p><code class="code-chip">data-magnetic</code></p>
+          <p class="ds-note">El botón sigue levemente al cursor (elastic al salir).</p>
+        </div>
+        <div class="motion-card">
+          <div class="motion-preview"><div class="motion-dot"></div></div>
+          <p><code class="code-chip">data-stagger-grid</code></p>
+          <p class="ds-note">Stagger para grids de cards (.1s, power3.out).</p>
+        </div>
+      </div>
+      <p class="ds-note" style="margin-top:var(--sp-4)">Respeta <code class="code-chip">prefers-reduced-motion</code>: las duraciones colapsan a 0s y los elementos se muestran directamente.</p>
+    </section>
+
+    <!-- ===================== BOTONES ===================== -->
+    <section class="ds-block" id="botones">
+      <p class="eyebrow">Componentes</p>
+      <h2>Botones</h2>
+      <div class="demo-row" style="margin-bottom:var(--sp-3)">
+        <button class="btn btn--primary" data-magnetic>Primario</button>
+        <button class="btn btn--dark">Oscuro</button>
+        <button class="btn btn--donate">Donar</button>
+        <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--primary" disabled>Deshabilitado</button>
+        <button class="btn-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="demo-row demo-row--dark">
+        <button class="btn btn--primary">Primario sobre oscuro</button>
+        <button class="btn btn--ghost-light">Ghost light</button>
+      </div>
+      <table class="spec" style="margin-top:var(--sp-5)">
+        <thead><tr><th>Clase</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>.btn.btn--primary</code></td><td>Acción principal (Adoptar, Enviar formulario)</td></tr>
+          <tr><td><code>.btn.btn--donate</code></td><td>Donar — único caso de uso del rojo como color de acción</td></tr>
+          <tr><td><code>.btn.btn--dark</code></td><td>Acción secundaria fuerte sobre fondos claros</td></tr>
+          <tr><td><code>.btn.btn--ghost</code> / <code>.btn--ghost-light</code></td><td>Acción terciaria, sobre fondo claro / sobre fondo oscuro</td></tr>
+          <tr><td><code>.btn--sm</code> / <code>.btn--block</code></td><td>Modificadores de tamaño y ancho completo</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===================== BADGES ===================== -->
+    <section class="ds-block" id="badges">
+      <p class="eyebrow">Componentes</p>
+      <h2>Badges</h2>
+      <div class="demo-row">
+        <span class="badge badge--green"><span class="badge-dot"></span>Disponible</span>
+        <span class="badge badge--red"><span class="badge-dot"></span>Urgente</span>
+        <span class="badge badge--sun">Cachorro</span>
+        <span class="badge badge--sky">Esterilizado</span>
+        <span class="badge badge--dark">Nuevo</span>
+      </div>
+    </section>
+
+    <!-- ===================== CARDS ===================== -->
+    <section class="ds-block" id="cards">
+      <p class="eyebrow">Componentes</p>
+      <h2>Cards</h2>
+
+      <div class="grid grid--3">
+        <article class="card card-dog">
+          <div class="card-dog__media">
+            <span class="badge badge--green card-dog__badge">Disponible</span>
+            <img src="assets/img/cereza.jpg" alt="Perrito rescatado por Arca Luminosa">
+          </div>
+          <div class="card-dog__body">
+            <h3 class="card-dog__name">Ejemplo</h3>
+            <div class="card-dog__meta"><span>Mestizo</span><span>·</span><span>2 años</span></div>
+            <p class="card-dog__desc">card-dog — usada en adoptar.html para fichas de animales.</p>
+            <a href="#" class="btn btn--ghost btn--sm">Conocer más</a>
+          </div>
+        </article>
+
+        <article class="card card-post">
+          <div class="card-post__media"><img src="assets/img/rescate-1.jpg" alt=""></div>
+          <div class="card-post__body">
+            <span class="card-post__date">Blog</span>
+            <h3 style="font-size:var(--fs-md)">card-post — usada en blog.html</h3>
+          </div>
+        </article>
+
+        <article class="card card-product">
+          <div class="card-product__media"><img src="assets/img/rescate-2.jpg" alt=""></div>
+          <div class="card-product__body">
+            <h4>card-product</h4>
+            <span class="card-product__price">$00.000 — usada en tienda.html</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid grid--2" style="margin-top:var(--sp-6)">
+        <div class="card-flat">
+          <h4>.card-flat</h4>
+          <p class="text-muted" style="margin-top:.5rem">Contenedor genérico con sombra suave — usado en formularios y bloques de contenido.</p>
+        </div>
+        <div class="card-flat card-flat--tint">
+          <h4>.card-flat--tint</h4>
+          <p class="text-muted" style="margin-top:.5rem">Variante con fondo verde tenue, sin sombra — usada para callouts informativos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FORMULARIOS ===================== -->
+    <section class="ds-block" id="formularios">
+      <p class="eyebrow">Componentes</p>
+      <h2>Formularios</h2>
+      <div class="card-flat" style="max-width:520px">
+        <div class="stack gap-5">
+          <div class="field">
+            <label for="ds-name">Nombre completo</label>
+            <input id="ds-name" type="text" placeholder="Tu nombre">
+          </div>
+          <div class="field">
+            <label for="ds-msg">Mensaje</label>
+            <textarea id="ds-msg" placeholder="Escribí acá..."></textarea>
+          </div>
+          <label class="field-check">
+            <input type="checkbox">
+            <span>Acepto ser contactado por Arca Luminosa.</span>
+          </label>
+          <button class="btn btn--primary btn--block">Enviar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NAVEGACIÓN ===================== -->
+    <section class="ds-block" id="navegacion">
+      <p class="eyebrow">Componentes</p>
+      <h2>Navegación</h2>
+      <p class="ds-note">Header fijo con blur al hacer scroll (<code class="code-chip">.is-scrolled</code>), dropdown en hover/focus (<code class="code-chip">.nav-item-drop</code>), menú mobile a pantalla completa animado con GSAP. Ver el header real arriba de esta misma página.</p>
+      <div class="cluster gap-3" style="margin-top:var(--sp-4)">
+        <span class="filter-pill is-active">Todos</span>
+        <span class="filter-pill">Perros</span>
+        <span class="filter-pill">Gatos</span>
+        <span class="filter-pill">Cachorros</span>
+      </div>
+      <p class="ds-note" style="margin-top:.6rem">.filter-pill — usado en adoptar.html / tienda.html para filtrar grids (data-filter-group).</p>
+    </section>
+
+    <!-- ===================== FEEDBACK ===================== -->
+    <section class="ds-block" id="feedback">
+      <p class="eyebrow">Componentes</p>
+      <h2>Acordeón &amp; progreso</h2>
+
+      <div class="card-flat" style="margin-bottom:var(--sp-6)">
+        <div class="accordion-item is-open">
+          <button class="accordion-trigger"><span>¿Cómo doy en adopción a un rescatado?</span><span class="plus"></span></button>
+          <div class="accordion-panel"><div class="accordion-panel__inner">Contenido de ejemplo del panel — usado en guia-adopcion.html y preguntas frecuentes.</div></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger"><span>¿Cuánto dura el proceso?</span><span class="plus"></span></button>
+          <div class="accordion-panel"><div class="accordion-panel__inner">Segundo ítem de ejemplo, cerrado por defecto.</div></div>
+        </div>
+      </div>
+
+      <p class="ds-note" style="margin-bottom:.5rem">.progress — barra de meta de donación</p>
+      <div class="progress"><div class="progress__bar" style="width:62%"></div></div>
+    </section>
+
+    <!-- ===================== OTROS ===================== -->
+    <section class="ds-block" id="otros">
+      <p class="eyebrow">Componentes</p>
+      <h2>Timeline, stats &amp; quotes</h2>
+
+      <div class="grid grid--2" style="gap:var(--sp-8)">
+        <div class="timeline">
+          <div class="timeline-item"><span class="timeline-item__year">2017</span><p style="margin-top:.4rem">Ítem de timeline de ejemplo.</p></div>
+          <div class="timeline-item"><span class="timeline-item__year">Hoy</span><p style="margin-top:.4rem">Segundo ítem de ejemplo.</p></div>
+        </div>
+        <div>
+          <div class="cluster gap-6" style="margin-bottom:var(--sp-6)">
+            <div class="stat"><span class="stat__num">2.800+</span><span class="stat__label">Collares</span></div>
+            <div class="stat"><span class="stat__num">1.459</span><span class="stat__label">Esterilizaciones</span></div>
+          </div>
+          <blockquote class="quote">"Cada collar es una promesa: no estoy perdido, busco un hogar."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <footer style="padding-top:var(--sp-7); border-top:1px solid var(--color-border)">
+      <p class="ds-note">Arca Luminosa · Design System v1.0 · Construido con HTML + CSS + GSAP, sin frameworks.</p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  var icons = [
+    ["icon-paw","Paw"],["icon-heart","Heart"],["icon-shield","Shield"],["icon-home","Home"],
+    ["icon-collar","Collar"],["icon-syringe","Syringe"],["icon-users","Users"],["icon-book","Book"],
+    ["icon-gift","Gift"],["icon-bag","Bag"],["icon-calendar","Calendar"],["icon-mail","Mail"],
+    ["icon-phone","Phone"],["icon-pin","Pin"],["icon-instagram","Instagram"],["icon-facebook","Facebook"],
+    ["icon-tiktok","TikTok"],["icon-whatsapp","WhatsApp"],["icon-arrow-right","Arrow"],["icon-chevron-down","Chevron"],
+    ["icon-check","Check"],["icon-quote","Quote"],["icon-target","Target"],["icon-megaphone","Megaphone"],
+    ["icon-file","File"],["icon-menu","Menu"],["icon-close","Close"],["icon-cart","Cart"],["icon-sun","Sun"],["icon-star","Star"]
+  ];
+  fetch("assets/icons/sprite.svg").then(function(r){ return r.ok ? r.text() : Promise.reject(); }).then(function(svgText){
+    var wrap = document.createElement("div");
+    wrap.style.display = "none";
+    wrap.innerHTML = svgText;
+    document.body.appendChild(wrap);
+    var grid = document.getElementById("icon-demo");
+    icons.forEach(function(pair){
+      var cell = document.createElement("div");
+      cell.className = "icon-swatch";
+      cell.innerHTML = '<svg><use href="#'+pair[0]+'"></use></svg><span>'+pair[1]+'</span>';
+      grid.appendChild(cell);
+    });
+  }).catch(function(){
+    document.getElementById("icon-demo").innerHTML =
+      '<p class="ds-note">No se pudo cargar assets/icons/sprite.svg vía fetch (normal si abrís este archivo con doble clic en Chrome — usá un servidor local tipo "npx serve" o la extensión Live Server para ver esta sección). Las páginas del sitio no dependen de este fetch: usan SVG inline.</p>';
+  });
+</script>
+</body>
+</html>

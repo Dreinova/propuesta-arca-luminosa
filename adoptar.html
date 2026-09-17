@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adoptar — Arca Luminosa</title>
+<meta name="description" content="Adoptá con Arca Luminosa: conocé nuestro proceso de 7 pasos, la guía por etapa de vida (cachorros, adultos y ancianitos) y cómo ver a los peluditos que buscan hogar.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .hero{ position:relative; padding-top:calc(var(--sp-10) + 2rem); padding-bottom:var(--sp-9); overflow:hidden; }
+  .hero__bg{ position:absolute; inset:0; background:radial-gradient(120% 100% at 85% 0%, var(--green-100) 0%, var(--cream-100) 55%); z-index:-2; }
+  .hero__grid{ display:grid; gap:var(--sp-8); align-items:center; }
+  @media(min-width:960px){ .hero__grid{ grid-template-columns:1.05fr .95fr; } }
+  .hero__media{ position:relative; }
+  .hero__media-frame{ border-radius:var(--radius-xl); overflow:hidden; aspect-ratio:4/5; box-shadow:var(--shadow-lg); position:relative; }
+  .hero__media-frame img{ width:100%; height:100%; object-fit:cover; }
+  .hero__badge-float{
+    position:absolute; left:-1.5rem; bottom:1.8rem; background:var(--cream-0); border-radius:var(--radius-lg);
+    padding:var(--sp-4) var(--sp-5); box-shadow:var(--shadow-md); display:flex; align-items:center; gap:.9rem; max-width:230px;
+  }
+  @media(max-width:539px){ .hero__badge-float{ left:.75rem; } }
+  .hero__badge-float .icon-tile{ background:var(--red-100); color:var(--red-600); }
+  .hero__ring{ position:absolute; top:-2rem; right:-2rem; width:9rem; height:9rem; border:2px dashed var(--green-300); border-radius:50%; z-index:-1; }
+
+  /* Etapas de vida (reusan .card + .card-dog tal cual) */
+  .lifestage-card .card-dog__meta{ flex-wrap:wrap; gap:.4rem .8rem; }
+
+  /* Galería ilustrativa de Instagram */
+  .insta-gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:var(--sp-4); }
+  @media(min-width:640px){ .insta-gallery{ grid-template-columns:repeat(4,1fr); } }
+  .insta-gallery a{ display:block; border-radius:var(--radius-md); overflow:hidden; aspect-ratio:1/1; position:relative; box-shadow:var(--shadow-sm); }
+  .insta-gallery img{ width:100%; height:100%; object-fit:cover; transition:transform var(--dur-slow) var(--ease-out); }
+  .insta-gallery a:hover img{ transform:scale(1.08); }
+  .insta-gallery__overlay{ position:absolute; inset:0; background:rgba(18,20,15,.35); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity var(--dur-fast); }
+  .insta-gallery a:hover .insta-gallery__overlay{ opacity:1; }
+  .insta-gallery__overlay svg{ width:1.8rem; height:1.8rem; color:#fff; }
+
+  .cta-band{ position:relative; border-radius:var(--radius-xl); overflow:hidden; padding:var(--sp-9) var(--gutter); text-align:center; background:var(--color-primary-ink); }
+  .cta-band::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 80% at 20% 20%, rgba(119,182,42,.35), transparent), radial-gradient(50% 70% at 85% 90%, rgba(215,69,46,.25), transparent); }
+  .cta-band > *{ position:relative; }
+
+  .process-note{ background:var(--color-primary-tint); border-radius:var(--radius-lg); padding:var(--sp-5) var(--sp-6); margin-top:var(--sp-6); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="adoptar.html" class="is-active">Adoptar</a>
+      <div class="nav-item-drop">
+        <a href="voluntarios.html">Voluntariado
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8.5 12 15l7-6.5"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de rescate y adopción</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="arca-plus.html" class="btn btn--ghost btn--sm" style="display:none">Arca+</a>
+      <a href="dona.html" class="btn btn--donate btn--sm" data-magnetic>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+        Donar
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="adoptar.html">Adoptar</a></li>
+    <li><a href="voluntarios.html">Voluntariado</a></li>
+    <li><a href="hogar-de-paso.html">Hogar de paso</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tienda.html">Tienda</a></li>
+    <li><a href="arca-plus.html">Arca+</a></li>
+    <li><a href="dona.html">Donar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" data-parallax-wrap>
+    <div class="hero__bg"></div>
+    <div class="container">
+      <div class="hero__grid">
+        <div data-hero-in>
+          <p class="eyebrow" data-hero-in>Adopción responsable · Bogotá, Colombia</p>
+          <h1 style="margin-top:1.1rem;" data-hero-in>Si elegiste la adopción, <em>felicitaciones</em></h1>
+          <p class="lede" style="margin-top:1.4rem" data-hero-in>
+            Adoptar salva vidas: es un gran acto de amor. En Arca Luminosa tenemos una tripulación de peludos rescatados muy especial — todos distintos, pero todos sobrevivientes de un pasado triste y vulnerable que ahora buscan una segunda oportunidad para toda su vida.
+          </p>
+          <p class="lede" style="margin-top:1rem" data-hero-in>
+            Cuando adoptás con Arca, estás salvando dos vidas: la del peludito que acogés en tu hogar y la del nuevo rescate que podremos hacer gracias al cupo que deja tu adopción.
+          </p>
+          <div class="cluster gap-3" style="margin-top:2rem" data-hero-in>
+            <a href="https://goo.gl/forms/yC3reRg6giOSEFzm1" target="_blank" rel="noopener" class="btn btn--primary" data-magnetic>
+              Diligenciar formulario de adopción
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#catalogo" class="btn btn--ghost" data-magnetic>Ver catálogo en Instagram</a>
+          </div>
+        </div>
+        <div class="hero__media" data-hero-in>
+          <div class="hero__ring"></div>
+          <div class="hero__media-frame">
+            <img data-parallax data-speed="-0.4" src="assets/img/voluntaria-perro-playa.jpg" alt="Voluntaria de Arca Luminosa abrazando con cariño a un perrito rescatado">
+          </div>
+          <div class="hero__badge-float">
+            <div class="icon-tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg>
+            </div>
+            <div>
+              <strong style="font-family:var(--font-display); font-size:var(--fs-sm); display:block;">#adoptanocompres</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESO DE ADOPCIÓN ================= -->
+  <section class="section section--surface" id="proceso">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start; gap:var(--sp-9)">
+        <div data-reveal>
+          <p class="eyebrow">Cómo funciona</p>
+          <h2 style="margin-top:1rem">Nuestro proceso de adopción, paso a paso</h2>
+          <p class="lede" style="margin-top:1.5rem">
+            Queremos que cada adopción sea responsable y para toda la vida. Por eso acompañamos cada caso con un proceso claro de siete pasos, desde el formulario inicial hasta el seguimiento después de la entrega.
+          </p>
+          <div class="process-note" data-reveal>
+            <p style="font-size:var(--fs-sm)"><strong style="color:var(--color-primary-dark)">¿Ya tenés claro que querés adoptar?</strong><br>El primer paso siempre es el formulario. Nuestro equipo de adopciones revisa cada solicitud con cuidado.</p>
+          </div>
+          <a href="https://goo.gl/forms/yC3reRg6giOSEFzm1" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top:var(--sp-6)" data-magnetic>Diligenciar formulario de adopción</a>
+        </div>
+        <ol class="timeline" data-reveal-group style="list-style:none">
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 1</span>
+            <p style="margin-top:.4rem">Completá el formulario de adopción.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 2</span>
+            <p style="margin-top:.4rem">Tu formulario será revisado y aprobado por nuestro equipo de adopciones.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 3</span>
+            <p style="margin-top:.4rem">Te contactaremos para programar una visita domiciliaria, virtual o presencial.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 4</span>
+            <p style="margin-top:.4rem">Si se aprueba la adopción, firmamos un contrato y coordinamos la entrega de la mascota.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 5</span>
+            <p style="margin-top:.4rem">La primera semana es de prueba y adaptación, para convivir y tomar la decisión definitiva.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 6</span>
+            <p style="margin-top:.4rem">Seguimos en contacto un tiempo para verificar cómo marcha todo con el peludito.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-item__year">Paso 7</span>
+            <p style="margin-top:.4rem">Te pediremos fotos y videos para el seguimiento.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ETAPA DE VIDA ================= -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="text-center" data-reveal style="max-width:640px; margin-inline:auto;">
+        <p class="eyebrow" style="justify-content:center">Antes de decidir</p>
+        <h2 style="margin-top:1rem">¿Sabés qué etapa se adapta mejor a tu estilo de vida?</h2>
+        <p class="lede" style="margin-top:1rem; margin-inline:auto;">Cachorros, adultos o ancianitos: cada etapa tiene su propio ritmo. Conocerlas te ayuda a elegir con quién vas a compartir los próximos años.</p>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--sp-8)" data-stagger-grid>
+        <article class="card card-dog lifestage-card">
+          <div class="card-dog__media">
+            <img src="assets/img/adoptar-etapa-cachorro.jpg" alt="Cachorro rescatado por Arca Luminosa con collar reflectivo en un parque">
+            <span class="card-dog__badge badge badge--sun">0 – 1 año</span>
+          </div>
+          <div class="card-dog__body">
+            <h3 class="card-dog__name">Cachorros</h3>
+            <div class="card-dog__meta">
+              <span>Juguetones</span><span>·</span><span>Energéticos</span><span>·</span><span>Curiosos</span>
+            </div>
+            <p class="card-dog__desc">¡Sin duda los más tiernos y también los más traviesos! Vas a disfrutar sus etapas de crecimiento, pero requieren tiempo, paciencia y dedicación: comen varias veces al día y hay que educarlos desde cero.</p>
+          </div>
+        </article>
+
+        <article class="card card-dog lifestage-card">
+          <div class="card-dog__media">
+            <img src="assets/img/adoptar-etapa-adulto.jpg" alt="Perro adulto rescatado por Arca Luminosa paseando con arnés">
+            <span class="card-dog__badge badge badge--green">1 – 7 años</span>
+          </div>
+          <div class="card-dog__body">
+            <h3 class="card-dog__name">Adultos</h3>
+            <div class="card-dog__meta">
+              <span>Tranquilos</span><span>·</span><span>Educados</span><span>·</span><span>Independientes</span>
+            </div>
+            <p class="card-dog__desc">Nuestra experiencia nos ha demostrado que un perro adulto es mucho más fácil de educar: ya pasó su etapa de cachorro y se amolda con facilidad. Sabemos su tamaño definitivo y su carácter.</p>
+          </div>
+        </article>
+
+        <article class="card card-dog lifestage-card">
+          <div class="card-dog__media">
+            <img src="assets/img/adoptar-etapa-senior.jpg" alt="Perrito ancianito rescatado por Arca Luminosa con collar reflectivo">
+            <span class="card-dog__badge badge badge--sky">8+ años</span>
+          </div>
+          <div class="card-dog__body">
+            <h3 class="card-dog__name">Ancianitos</h3>
+            <div class="card-dog__meta">
+              <span>Tranquilos</span><span>·</span><span>Amorosos</span><span>·</span><span>Dormilones</span>
+            </div>
+            <p class="card-dog__desc">Ya están educados y saben convivir en armonía con la familia. Son más calmados y sedentarios — y muchísimo más agradecidos, porque conocen el abandono.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATÁLOGO EN INSTAGRAM ================= -->
+  <section class="section section--surface" id="catalogo">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:center; gap:var(--sp-9)">
+        <div data-reveal>
+          <p class="eyebrow">Nuestro catálogo se actualiza en Instagram</p>
+          <h2 style="margin-top:1rem">Conocé a los peluditos que hoy buscan hogar</h2>
+          <p class="lede" style="margin-top:1.5rem">
+            El cupo de rescatados de Arca Luminosa cambia todo el tiempo: hay ingresos, adopciones y altas médicas cada semana. Por eso mantenemos el catálogo actualizado directamente en nuestro Instagram, con fotos, videos e historias de cada uno.
+          </p>
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top:var(--sp-6)" data-magnetic>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg>
+            Ver quién busca hogar ahora
+          </a>
+        </div>
+        <div class="insta-gallery" data-stagger-grid>
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener">
+            <img src="assets/img/cereza.jpg" alt="Perrita rescatada por Arca Luminosa">
+            <span class="insta-gallery__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></span>
+          </a>
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener">
+            <img src="assets/img/rescate-1.jpg" alt="Perrito rescatado recibiendo atención veterinaria de Arca Luminosa">
+            <span class="insta-gallery__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></span>
+          </a>
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener">
+            <img src="assets/img/malalis.jpg" alt="Gatita rescatada por Arca Luminosa en brazos de una voluntaria">
+            <span class="insta-gallery__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></span>
+          </a>
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener">
+            <img src="assets/img/perrito-1.jpg" alt="Perrito rescatado por Arca Luminosa con collar reflectivo">
+            <span class="insta-gallery__overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FINAL ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <p class="eyebrow" style="justify-content:center; color:var(--green-300)">#adoptanocompres</p>
+        <h2 style="color:#fff; margin-top:1rem; max-width:26ch; margin-inline:auto;">¿Ya rescataste a tu compañero? También te ayudamos a guiar su adopción</h2>
+        <div class="cluster gap-3" style="justify-content:center; margin-top:2rem">
+          <a href="guia-adopcion.html" class="btn btn--primary" data-magnetic>Guía para rescatistas</a>
+          <a href="https://goo.gl/forms/yC3reRg6giOSEFzm1" target="_blank" rel="noopener" class="btn btn--ghost-light" data-magnetic>Diligenciar formulario</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff"><img src="assets/img/logo.png" alt="Arca Luminosa"> Arca Luminosa</a>
+        <p style="margin-top:1rem;color:var(--green-200);max-width:32ch">Iluminando la vida de los animales callejeros de Colombia desde 2017.</p>
+        <div class="social-row" style="margin-top:1.5rem">
+          <a href="https://www.instagram.com/arcaluminosa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg>
+          </a>
+          <a href="https://www.facebook.com/ArcaLuminosa/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21v-7.2h2.4l.4-3h-2.8V8.8c0-.9.3-1.5 1.6-1.5h1.3V4.7c-.2 0-1-.1-1.9-.1-2.9 0-4 1.8-4 4.6v2.6H9v3h2.5V21z"/></svg>
+          </a>
+          <a href="http://www.twitter.com/arcaluminosa" target="_blank" rel="noopener" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          </a>
+          <a href="https://youtu.be/pOTx8JRlg14" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.3 9.6v4.8l4.4-2.4z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Fundación</h4>
+        <div class="footer-links">
+          <a href="index.html#historia">Nuestra historia</a>
+          <a href="blog.html">Blog</a>
+          <a href="difusiones.html">Difusiones</a>
+          <a href="transparencia.html">Transparencia DIAN</a>
+        </div>
+      </div>
+      <div>
+        <h4>Involúcrate</h4>
+        <div class="footer-links">
+          <a href="adoptar.html">Adoptar</a>
+          <a href="voluntarios.html">Ser voluntario</a>
+          <a href="hogar-de-paso.html">Hogar de paso</a>
+          <a href="guia-adopcion.html">Guía de adopción</a>
+          <a href="arca-plus.html">Arca+</a>
+        </div>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <div class="footer-links">
+          <a href="dona.html">Donar</a>
+          <a href="tienda.html">Tienda solidaria</a>
+          <a href="agenda.html">Agenda una jornada</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Arca Luminosa · Fundación sin ánimo de lucro · Bogotá, Colombia</span>
+      <span>Diseñado con <svg width="12" height="12" style="display:inline;vertical-align:-1px" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-9.8-9.6C.6 7.2 2.3 3.8 5.7 3.2c2-.3 3.9.6 5 2.3 1.1-1.7 3-2.6 5-2.3 3.4.6 5.1 4 3.5 7.7-2.3 5-9.8 9.6-9.8 9.6z"/></svg> para quienes no tienen voz</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top btn-circle" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
